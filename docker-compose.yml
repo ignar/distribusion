@@ -1,0 +1,9 @@
+version: '2'
+volumes:
+  bundle:
+services:
+  app:
+    image: ignar/distribusion
+    volumes:
+      - .:/app
+      - bundle:/bundle
