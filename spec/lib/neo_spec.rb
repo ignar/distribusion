@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Neo do
-  let(:pill) { double('Pill', location: 'http://location.com') }
-  let(:adventure) { double('Adventure', accept: pill, reject: pill) }
+  let(:adventure) { double('Adventure', acceptance_path: '', rejection_path: '') }
 
   subject { described_class.new(adventure) }
 
