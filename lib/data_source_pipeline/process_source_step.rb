@@ -7,7 +7,7 @@ class DataSourcePipeline
     end
 
     def self.call(source_name: , location: )
-      
+
     end
   end
 end
