@@ -32,13 +32,13 @@ RSpec.describe Adventure do
 
   describe '#acceptance_path' do
     it 'suggests the red pill' do
-      expect(subject.acceptance_path).to eq(red_location)
+      expect(subject.red_pill).to be_kind_of(Pill)
     end
   end
 
   describe '#rejection_path' do
     it 'suggests the blue pill' do
-      expect(subject.rejection_path).to eq(blue_location)
+      expect(subject.blue_pill).to be_kind_of(Pill)
     end
   end
 end

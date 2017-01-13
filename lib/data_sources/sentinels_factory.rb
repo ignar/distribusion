@@ -1,6 +1,6 @@
 module DataSources
   class SentinelsFactory < AbstractFactory
-    def builder
+    def records_set_builder
       DataSources::SentinelsRecordsSetBuilder.new(
         routes_file: File.join(location, 'routes.csv'),
         passphrase: passphrase

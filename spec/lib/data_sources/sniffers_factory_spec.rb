@@ -5,7 +5,7 @@ RSpec.describe DataSources::SniffersFactory do
 
   describe '#builder' do
     it 'returns builder' do
-      expect(subject.builder).to be_kind_of(DataSources::SniffersRecordsSetBuilder)
+      expect(subject.records_set_builder).to be_kind_of(DataSources::SniffersRecordsSetBuilder)
     end
   end
 end

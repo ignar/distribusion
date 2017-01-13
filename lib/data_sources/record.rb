@@ -7,5 +7,16 @@ module DataSources
         instance_variable_set("@#{k}".to_sym, v)
       end
     end
+
+    def to_json
+      {
+        source: source,
+        passphrase: passphrase,
+        start_node: start_node,
+        end_node: end_node,
+        start_time: start_time,
+        end_time: end_time
+      }
+    end
   end
 end

@@ -9,6 +9,10 @@ module DataSources
       end
     end
 
+    def empty?
+      @collection.empty?
+    end
+
     def each(&block)
       collection.each(&block)
     end

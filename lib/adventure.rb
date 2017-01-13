@@ -22,13 +22,11 @@ class Adventure
     new(pills)
   end
 
-  def acceptance_path
-    pill = pills.fetch(:red)
-    pill.location
+  def red_pill
+    pills.fetch(:red)
   end
 
-  def rejection_path
-    pill = pills.fetch(:blue)
-    pill.location
+  def blue_pill
+    pills.fetch(:blue)
   end
 end

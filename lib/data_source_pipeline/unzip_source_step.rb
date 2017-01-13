@@ -26,7 +26,7 @@ class DataSourcePipeline
           entry.extract(destination_location(entry.name))
         end
       end
-      base_path
+      File.join(base_path, source_name)
     end
 
     def base_path

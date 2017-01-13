@@ -5,7 +5,7 @@ RSpec.describe DataSources::SentinelsFactory do
 
   describe '#builder' do
     it 'returns builder' do
-      expect(subject.builder).to be_kind_of(DataSources::SentinelsRecordsSetBuilder)
+      expect(subject.records_set_builder).to be_kind_of(DataSources::SentinelsRecordsSetBuilder)
     end
   end
 end

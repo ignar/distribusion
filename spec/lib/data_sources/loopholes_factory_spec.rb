@@ -5,7 +5,7 @@ RSpec.describe DataSources::LoopholesFactory do
 
   describe '#builder' do
     it 'returns builder' do
-      expect(subject.builder).to be_kind_of(DataSources::LoopholesRecordsSetBuilder)
+      expect(subject.records_set_builder).to be_kind_of(DataSources::LoopholesRecordsSetBuilder)
     end
   end
 end

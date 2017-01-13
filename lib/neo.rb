@@ -6,10 +6,10 @@ class Neo
   end
 
   def accept_adventure
-    adventure.acceptance_path
+    adventure.red_pill
   end
 
   def reject_adventure
-    adventure.rejection_path
+    adventure.blue_pill
   end
 end

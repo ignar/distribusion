@@ -8,7 +8,7 @@ module DataSources
       @passphrase = passphrase
     end
 
-    def builder
+    def records_set_builder
       raise NotImplementedError
     end
   end
