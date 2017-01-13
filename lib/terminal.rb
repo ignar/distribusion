@@ -7,7 +7,7 @@ class Terminal
 
   class << self
     def receive_warning
-      get(THE_ONE_URL)
+      get_json(THE_ONE_URL)
     end
 
     def load_source(source, passphrase)

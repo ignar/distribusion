@@ -7,12 +7,13 @@ module DataSources
     attr_reader :passphrase
 
     def initialize(routes_file: , node_pairs_file: , passphrase: )
+      @routes_file = routes_file
+      @node_pairs_file = node_pairs_file
       @passphrase = passphrase
-      @routes = read_source(routes_file)
-      @node_pairs = read_source(node_pairs_file)
     end
 
     def build
+      read_sources!
       RecordsSet.new do |records|
         routes.each do |route|
           node_pair = find_node_pair(route['node_pair_id'])
@@ -31,6 +32,11 @@ module DataSources
     end
 
     private
+
+    def read_sources!
+      @routes = read_source(@routes_file)
+      @node_pairs = read_source(@node_pairs_file)
+    end
 
     def read_source(file)
       content = File.read(file)

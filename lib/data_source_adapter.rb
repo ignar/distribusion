@@ -1,2 +1,0 @@
-class DataSourceAdapterd
-end

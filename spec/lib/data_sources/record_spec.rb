@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Record do
+RSpec.describe DataSources::Record do
   it { is_expected.to respond_to(:source) }
   it { is_expected.to respond_to(:start_node) }
   it { is_expected.to respond_to(:end_node) }

@@ -8,13 +8,14 @@ module DataSources
     attr_reader :passphrase
 
     def initialize(routes_file: , node_times_file: , sequences_file: , passphrase: )
-      @routes = read_routes_source(routes_file)
-      @node_times = read_node_times_source(node_times_file)
-      @sequences = read_sequences_source(sequences_file)
+      @routes_file = routes_file
+      @node_times_file = node_times_file
+      @sequences_file = sequences_file
       @passphrase = passphrase
     end
 
     def build
+      read_sources!
       RecordsSet.new do |records|
         sequences.each do |sequence|
           route = find_relation(routes, 'route_id', sequence['route_id'])
@@ -34,6 +35,12 @@ module DataSources
     end
 
     private
+
+    def read_sources!
+      @routes = read_routes_source(@routes_file)
+      @node_times = read_node_times_source(@node_times_file)
+      @sequences = read_sequences_source(@sequences_file)
+    end
 
     def find_relation(source, field, value)
       source.find { |e| e[field] == value }
