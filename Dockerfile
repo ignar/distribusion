@@ -1,4 +1,4 @@
-FROM ruby:2.1-onbuild
+FROM ruby:2.4-onbuild
 
 RUN mkdir -p /bundle && mkdir -p /app
 WORKDIR /app
