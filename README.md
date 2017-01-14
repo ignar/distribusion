@@ -1,5 +1,7 @@
 ## Test assignment for Distribusion
 
+[![Build Status](https://travis-ci.org/ignar/distribusion.svg?branch=master)](https://travis-ci.org/ignar/distribusion)
+
 Created for fun and profit
 
 ## Demo
