@@ -1,11 +1,14 @@
 require 'uri'
 require 'json'
 
+# TODO Add decorator for logging facilities
+# TODO It doesn't hold http errors. Have to be improved
 class Terminal
   DOMAIN = 'http://challenge.distribusion.com'.freeze
   THE_ONE = 'the_one'.freeze
   ROUTES = 'the_one/routes'.freeze
 
+  # TODO Move to separte class. Cover with tests
   class ImportAnswer
     attr_accessor :status
     attr_accessor :data

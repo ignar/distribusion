@@ -10,6 +10,7 @@ class HackingProgram
     @logger = logger
   end
 
+  # TODO Refactor Violates SRP
   def load_collected_info(loader: DataSourceLoader, passphrase:)
     self.records_sets = loader.load(passphrase)
   end
@@ -18,6 +19,8 @@ class HackingProgram
     catch :neo_is_found do
       records_sets.each do |record_set|
         record_set.each do |record|
+          # TODO Refactor. Execution of command have to be in separte class
+          # Violates SRP
           answer = terminal.import_parsed_data(record.to_json)
           logger.info("STATUS #{answer.status}")
           display_message(answer)
@@ -32,6 +35,8 @@ class HackingProgram
 
   private
 
+  # TODO Refactor
+  # This violates SRP. Should be moved to separate class
   def display_message(answer)
     severity = answer.successful? ? :info : :error
 

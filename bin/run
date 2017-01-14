@@ -3,6 +3,7 @@
 require './app'
 require 'logger'
 
+# TODO Initialize logger in app. Refactor
 logger = Logger.new(STDOUT)
 
 adventure = Adventure.start
@@ -10,6 +11,8 @@ neo = Neo.new(adventure)
 
 logger.info('Neo starts his adventure')
 
+# it is not obvious that `accept_adventure` returns pill
+# I would like to improve it
 red_pill = neo.accept_adventure
 
 logger.info('He accepts red pill')
