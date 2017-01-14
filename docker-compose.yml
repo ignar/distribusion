@@ -3,6 +3,7 @@ volumes:
   bundle:
 services:
   app:
+    command: bin/entrypoint bin/run
     image: ignar/distribusion
     volumes:
       - .:/app

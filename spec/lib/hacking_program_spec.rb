@@ -13,7 +13,7 @@ RSpec.describe HackingProgram do
     })
   end
   let(:records_sets) { [DataSources::RecordsSet.new([record])] }
-  let(:logger) { double('Logger', info: true) }
+  let(:logger) { double('Logger', error: true) }
   let(:file_content) { File.read("spec/fixtures/loopholes.zip") }
   let(:answer) { File.read("spec/fixtures/answer.json") }
 
@@ -25,7 +25,7 @@ RSpec.describe HackingProgram do
   end
 
   subject do
-    described_class.new.tap do |o|
+    described_class.new(logger: logger).tap do |o|
       o.passphrase = passphrase
       o.records_sets = records_sets
       o.terminal = Terminal
@@ -34,9 +34,9 @@ RSpec.describe HackingProgram do
 
   describe '#hack' do
     it 'imports data' do
-      expect(logger).to receive(:info).with(answer)
+      expect(logger).to receive(:error).exactly(4).times
       expect(logger).to receive(:info).with("STATUS 503")
-      subject.hack(logger: logger)
+      subject.hack
     end
   end
 end

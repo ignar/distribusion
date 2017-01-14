@@ -1,9 +1,10 @@
 require 'uri'
+require 'json'
 
 class Terminal
   DOMAIN = 'http://challenge.distribusion.com'.freeze
-  THE_ONE_URL = 'the_one'.freeze
-  ROUTES = 'routes'.freeze
+  THE_ONE = 'the_one'.freeze
+  ROUTES = 'the_one/routes'.freeze
 
   class ImportAnswer
     attr_accessor :status
@@ -16,7 +17,7 @@ class Terminal
 
   class << self
     def receive_warning
-      get_json(THE_ONE_URL)
+      get_json(THE_ONE)
     end
 
     def load_source(source, passphrase)
@@ -43,12 +44,20 @@ class Terminal
     end
 
     def post(url, args = {})
-      response = adapter.post(url, args)
+      response = adapter.post do |req|
+        req.url url
+        req.body = args.to_json
+        req.headers['Content-Type'] = 'application/json'
+        req.headers['Accept'] = 'application/json'
+      end
     end
 
     # TODO handle non-json answers and errors
     def get_json(url, args = {})
-      response = adapter.get(url, args)
+      response = adapter.get(url, args) do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.headers['Accept'] = 'application/json'
+      end
       body = response.body
       JSON.parse(body)
     end

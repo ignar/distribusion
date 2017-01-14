@@ -1,18 +1,12 @@
 class DataSourceLoader
-  SOURCE_TYPES = %w(sentinels sniffers loopholes).freeze
-
-  attr_reader :records_sets
-
-  def initialize
-    @records_sets = []
-  end
+  SOURCE_TYPES = %w(sentinels loopholes sniffers).freeze
 
   def self.load(passphrase)
-    instance = new
+    collection = []
     SOURCE_TYPES.each do |type|
       pipeline = DataSourcePipeline.new(source_name: type, passphrase: passphrase)
-      instance.records_sets << pipeline.process
+      collection << pipeline.process
     end
-    instance
+    collection
   end
 end

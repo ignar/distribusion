@@ -1,7 +1,5 @@
 class DataSourcePipeline
   class SaveSourceStep
-    FILE_NAME = 'archive.zip'.freeze
-
     attr_reader :source_name
     attr_reader :data
     attr_reader :destination_dir
@@ -24,15 +22,23 @@ class DataSourcePipeline
 
     def compose_file_name
       FileUtils.mkdir_p(source_name)
-      File.join(source_name, FILE_NAME)
+      File.join(source_name, "#{source_name}.zip")
     end
 
     def write_file
       in_destination_dir do
+        cleanup_files_if_exist
         File.open(compose_file_name, 'w') do |f|
           f.write(data)
         end
         File.join(destination_dir, compose_file_name)
+      end
+    end
+
+    def cleanup_files_if_exist
+      extracted_dir_name = File.join(source_name)
+      if Dir.exist?(extracted_dir_name)
+        FileUtils.rm_r(extracted_dir_name)
       end
     end
 

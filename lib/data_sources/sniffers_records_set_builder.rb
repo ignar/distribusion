@@ -1,6 +1,6 @@
 module DataSources
   class SniffersRecordsSetBuilder
-    SOURCE_NAME = 'loopholes'.freeze
+    SOURCE_NAME = 'sniffers'.freeze
 
     attr_reader :routes
     attr_reader :node_times
@@ -48,7 +48,7 @@ module DataSources
 
     def calculate_end_time(time, offset)
       result = Time.parse(time) + (offset.to_i/1000)
-      result.to_s
+      result.strftime('%FT%T')
     end
 
     def read_routes_source(file)

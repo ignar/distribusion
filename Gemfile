@@ -7,5 +7,8 @@ gem 'rubyzip', '~> 1.2'
 
 group :test do
   gem 'webmock', '~> 2.3'
+end
+
+group :test, :development do
   gem 'byebug'
 end
