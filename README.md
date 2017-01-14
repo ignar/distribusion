@@ -8,6 +8,14 @@ Created for fun and profit
 
 ## Usage
 
+```
 $ git clone git@github.com:ignar/distribusion.git
 $ docker build -t ignar/distribusion .
 $ docker-compose run app
+```
+
+## Run tests
+
+```
+$ docker-compose run app bundle exec rspec
+```
