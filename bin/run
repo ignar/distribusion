@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require './app'
+require 'logger'
+
+logger = Logger.new(STDOUT)
+
+adventure = Adventure.start
+neo = Neo.new(adventure)
+
+logger.info('Neo starts his adventure')
+
+red_pill = neo.accept_adventure
+
+logger.info('He accepts red pill')
+logger.info("Navigates to #{red_pill.location}")
+
+hacking_program = HackingProgram.new
+hacking_program.passphrase = red_pill.passphrase
+hacking_program.terminal = Terminal
+
+logger.info('Program is started ...')
+
+hacking_program.load_collected_info(passphrase: red_pill.passphrase)
+
+logger.info('Data sources are loaded ...')
+
+hacking_program.hack
